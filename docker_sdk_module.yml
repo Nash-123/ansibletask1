@@ -1,0 +1,12 @@
+- name: Docker SDK
+  hosts: 192.168.0.102
+  tasks:
+      - name: python3 Docker SKD
+        command: pip3 install docker
+        register: x
+        ignore_errors: yes
+
+
+      - debug:
+             var: x
+        

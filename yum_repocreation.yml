@@ -1,0 +1,18 @@
+- name: Creation of Yum repository
+  hosts: 192.168.0.102
+  tasks:
+      - name: Creation of Appstream repo
+        yum_repository:    
+           name: dvd1AppStream
+           description: Addition of Appstream Repo
+           baseurl: file:///run/media/redhat/RHEL-8-0-0-BaseOS-x86_64/AppStream
+           # baseurl: file:///run/media/redhat/RHEL-8-0-0-BaseOS-x86_64/BaseOS
+           gpgcheck: no
+      - name: Creation of BaseOS repo
+        yum_repository: 
+           name: dvd2BaseOS
+           description: Addition of BaseOs Repo
+           baseurl: file:///run/media/redhat/RHEL-8-0-0-BaseOS-x86_64/BaseOS
+           gpgcheck: no
+
+

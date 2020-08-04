@@ -1,0 +1,9 @@
+- name: Docker Integration with Ansible
+  hosts: 192.168.0.107
+  tasks:
+     - name: Addition of docker repository
+       yum_repository:
+          name: docker
+          description: docker repository created
+          baseurl: https://download.docker.com/linux/centos/7/x86_64/stable
+          gpgcheck: no

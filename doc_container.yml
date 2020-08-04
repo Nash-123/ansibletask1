@@ -1,0 +1,32 @@
+
+- name: creation of folder and copying of the local files
+  hosts: 192.168.0.102
+  tasks:
+     - name: folder creation
+       file:
+         path: "/nishan"
+         state: directory
+
+     - name: copying the files
+       copy:         
+         src: "test.html"
+         dest: "/nishan/"
+
+     - name: copying files to /var/www/html
+       copy:
+         src: "test.html"
+         dest: "/var/www/html/"
+         enabled: yes
+
+     - name: Docker container creation
+       docker_container:
+         name: "client-server"
+         image: "httpd"
+         state: started
+         exposed_ports:
+         - "80"
+         ports:
+         - "1279:80"
+         volumes:
+         - /var/www/html/:/usr/local/apache2/htdocs/
+
